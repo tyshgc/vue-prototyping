@@ -5,6 +5,16 @@ var Vue  = require("vue");
 App = module.exports = new Vue({
   
   el: '#app',
-  components: {}
-                               
+  components: {
+    'vue-header'  : require('./vue/header.vue')
+  },
+  
+  data:{
+    todo: []
+  },
+  
+  methods: {
+  
+  }
+  
 });

@@ -1,0 +1,25 @@
+- var page= {}
+- page.title = 'Vue-Materialize-Prototype'
+- page.titleSeparation = ' - ' 
+
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, minimal-ui")
+    link(href="//fonts.googleapis.com/css?family=Roboto:400,300,700" rel="stylesheet" type="text/css")
+    link(type="text/css", rel="stylesheet", media="all", href="/styles/view.min.css")
+    block css
+      //- CSSを追加する用のBlock
+    block title
+      //- html.title変更用のBlock
+      title= page.title
+      
+  block body
+    body#app
+      block contents
+        //- contents
+        
+      block script
+        //- Javascriptを追加・変更する用のBlock
+        script(type="text/javascript", src="/scripts/app.js")

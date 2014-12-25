@@ -8,7 +8,9 @@ rename       = require 'gulp-rename'
 coffee       = require 'gulp-coffee'
 jade         = require 'gulp-jade'
 connect      = require 'gulp-connect'
-bowerFiles   = require 'main-bower-files'
+util         = require 'gulp-util'
+filter       = require 'gulp-filter'
+mainBower    = require 'main-bower-files'
 uglify       = require 'gulp-uglify'
 browserify   = require 'browserify'
 debowerify   = require 'debowerify'
@@ -104,9 +106,14 @@ gulp.task 'script', ->
   
 # Bower
 gulp.task 'bower', ->
-  gulp.src bowerFiles()
-  .pipe gulp.dest './dest/lib'
-  gulp.start 'fonts', 'lib-css'
+  gulp.src mainBower({
+    paths: {
+      bowerDirectory: './bower_components',
+      bowerrc: './.bowerrc',
+      bowerJson: './bower.json'
+    }
+  })
+  .pipe gulp.dest "./dest/lib/"
 
 
 # Connect local Server
