@@ -10,6 +10,7 @@ jade         = require 'gulp-jade'
 connect      = require 'gulp-connect'
 util         = require 'gulp-util'
 filter       = require 'gulp-filter'
+bower        = require 'gulp-bower'
 mainBower    = require 'main-bower-files'
 uglify       = require 'gulp-uglify'
 browserify   = require 'browserify'
@@ -33,11 +34,15 @@ gulp.task 'stylus', ->
 
 # Css library
 gulp.task 'lib-css', ->
-  gulp.src            './src/styles/*.css'
+  gulp.src            [
+    './src/styles/*.css'
+    './src/lib/*.css'
+  ]
   .pipe minifyCss     keepSpecialComments: 0
   .pipe rename        extname: '.min.css'
   .pipe gulp.dest     './dest/styles'
 
+  
 
 # Webfont
 gulp.task 'fonts', ->
@@ -48,7 +53,6 @@ gulp.task 'fonts', ->
     './src/images/fonts/*.woff'
   ]
   .pipe gulp.dest './dest/fonts'
-
 
 # Sprite image
 gulp.task 'sprite', ->
@@ -71,6 +75,7 @@ gulp.task 'images', ->
     './src/images/*.*'
     './src/images/samples/*.*'
     './src/images/components/*.*'
+    './src/design/assets/*.*'
   ]
   .pipe gulp.dest './dest/images'
 
@@ -106,14 +111,8 @@ gulp.task 'script', ->
   
 # Bower
 gulp.task 'bower', ->
-  gulp.src mainBower({
-    paths: {
-      bowerDirectory: './bower_components',
-      bowerrc: './.bowerrc',
-      bowerJson: './bower.json'
-    }
-  })
-  .pipe gulp.dest "./dest/lib/"
+  gulp.src mainBower()
+  .pipe gulp.dest "./src/lib/"
 
 
 # Connect local Server
@@ -136,6 +135,7 @@ gulp.task 'default', [
     'bower'
     'sprite'
     'images'
+    'fonts'
     'lib-css'
     'stylus'
     'jade'
