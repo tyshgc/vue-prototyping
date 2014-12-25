@@ -89,7 +89,7 @@ gulp.task 'jade', ->
 gulp.task 'script', ->
   browserify
     entries: [
-      './src/scripts/app.coffee'
+      './src/scripts/app.js'
     ]
     extensions: ['.coffee']
   .transform 'coffeeify'
