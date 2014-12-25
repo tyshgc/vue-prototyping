@@ -1,10 +1,5 @@
 
 var Vue  = require("vue");
-var $ = require("jquery");
-window.jQuery = $;
-
-var ripples  = require("../lib/ripples");
-var material  = require("../lib/material");
 
 App = module.exports = new Vue({
   
