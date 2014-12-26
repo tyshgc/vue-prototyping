@@ -1,5 +1,5 @@
 - var page= {}
-- page.title = 'Vue-Materialize-Prototype'
+- page.title = 'Vue-Material-Prototype'
 - page.titleSeparation = ' - ' 
 
 doctype html
@@ -7,7 +7,9 @@ html
   head
     meta(charset="utf-8")
     meta(name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, minimal-ui")
-    link(href="//fonts.googleapis.com/css?family=Roboto:400,300,700" rel="stylesheet" type="text/css")
+    link(type="text/css", rel="stylesheet", media="all", href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css")
+    link(type="text/css", rel="stylesheet", media="all", href="/styles/ripples.min.css")
+    link(type="text/css", rel="stylesheet", media="all", href="/styles/material.min.css")
     link(type="text/css", rel="stylesheet", media="all", href="/styles/view.min.css")
     block css
       //- CSSを追加する用のBlock
@@ -16,7 +18,7 @@ html
       title= page.title
       
   block body
-    body#app
+    body#app.app_layout
       block contents
         //- contents
         
